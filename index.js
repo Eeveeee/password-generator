@@ -75,8 +75,8 @@ function generatePassword() {
     activateDialog(dialogMessages.lengthError)
   }
   if (passwordLength > 64) {
-    passwordLength = 64
-    inputLength.value = 64
+    passwordLength = 16
+    inputLength.value = 16
     activateDialog(dialogMessages.lengthError)
   }
   passwordField.textContent = getRandomSymbol([48, 122])
