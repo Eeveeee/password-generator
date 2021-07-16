@@ -8,8 +8,7 @@ const lengthSelectors = document.querySelectorAll('.password-length__selector')
 
 const dialogMessages = {
   copy: 'Пароль скопирован',
-  lengthError:
-    'Длина должна быть от 1 до 64, сгенерирован пароль из 16 символов',
+  lengthError: 'Длина должна быть от 1 до 64',
 }
 
 let passwordLength = 16
@@ -75,24 +74,15 @@ function generatePassword() {
     activateDialog(dialogMessages.lengthError)
   }
   if (passwordLength > 64) {
-    passwordLength = 16
-    inputLength.value = 16
+    passwordLength = 64
+    inputLength.value = 64
     activateDialog(dialogMessages.lengthError)
   }
   passwordField.textContent = getRandomSymbol([48, 122])
 }
-function onKeyDown(e, prevValue) {
-  prevValue = e.currentTarget.value
-  return prevValue
-}
 function initLength() {
-  let prevValue = passwordLength
-  inputLength.addEventListener('keydown', (e) => {
-    prevValue = onKeyDown(e, prevValue)
-    return prevValue
-  })
   inputLength.addEventListener('input', (e) => {
-    return changeLength(e, prevValue)
+    return changeLength(e)
   })
 }
 
